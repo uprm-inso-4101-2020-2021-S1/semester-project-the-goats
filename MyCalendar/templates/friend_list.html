@@ -1,0 +1,29 @@
+{%  extends 'base.html' %}
+
+{% block tilte %} Home {% endblock %}
+{% block body %}
+
+    <div>
+    <a href="{% url 'friendlist' %}"> Friend List</a>
+    /
+    <a href="{% url 'addfriend'  %}">Add Friends</a>
+    /
+    <a href="{% url 'pendingfriends'  %}">Pending Friends</a>
+
+
+
+    </div>
+
+    <div>
+
+    {% for follower in followers %}
+        {% if follower.accepted %}
+           > {{ follower.following.username }} <br>
+        {% endif %} 
+
+    {% endfor %}
+
+    </div>
+
+
+{% endblock %}
