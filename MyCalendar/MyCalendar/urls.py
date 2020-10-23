@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from manager import views as managerViews
 from users import views as userViews
+from Events import views as eventViews
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -30,4 +31,5 @@ urlpatterns = [
     path('friends/pending', userViews.pendingrequests, name='pendingfriends'),
     path('friends/pending/accept/<int:pk>', userViews.requestaccept, name='acceptfirend'),
     path('friends/pending/decline/<int:pk>', userViews.requestdecline, name='declinefriend'),
+    path('calendar', eventViews.CalendarView, name='calendarview')
 ]
