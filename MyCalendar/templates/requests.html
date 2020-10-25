@@ -7,8 +7,6 @@
     <a href="{% url 'friendlist' %}"> Friend List</a>
     /
     <a href="{% url 'addfriend'  %}">Add Friends</a>
-    /
-    <a href="{% url 'pendingfriends'  %}">Pending Friends</a>
 
 
     </div>
@@ -19,7 +17,7 @@
         <div>
        > {{ follow.creator.username }} wants to be your friend. <br>
        >><a href="{% url 'acceptfirend' follow.pk %}"> Accept </a>
-
+        /
         <a href="{% url 'declinefriend' follow.pk %}"> Decline </a>
         </div>
 

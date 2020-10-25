@@ -3,6 +3,9 @@
 {% block tilte %} Home {% endblock %}
 {% block body %}
 
+<a href="{% url 'friendlist'  %}"> < Back to your Friend List </a>
+
+
  <form method="post" novalidate>
               {% csrf_token %}
               {% include 'form.html' %}

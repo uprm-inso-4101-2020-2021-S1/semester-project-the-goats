@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, HttpResponseRedirect, Http404
 import datetime
 from .forms import *
 # Create your views here.
@@ -32,13 +33,15 @@ def addfriend(request):
         form = FriendForm(request.POST)
         user = request.user
         if form.is_valid():
-            User
             connection = form.save()
             connection.created = datetime.datetime.now()
             connection.creator = user
             connection.accepted = False
-            connection.save()
-            return redirect('home')
+            if connection.following == user:
+                connection.delete
+            else:
+                connection.save()
+                return redirect('home')
     form = FriendForm()
     return render(request, 'add_friend.html', {'form': form})
 
