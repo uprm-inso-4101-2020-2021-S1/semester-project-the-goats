@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.urls import reverse
 # Create your models here.
 class Event(models.Model):
     title = models.CharField(max_length=50)
@@ -29,3 +30,7 @@ class Event(models.Model):
         for event in events:
             if self.check_overlap(event.start, event.end, self.start, self.end):
                 raise ValidationError('There is time overlap with another event.')
+
+    def get_absolute_url(self):
+        url = reverse('admin:%s_%s_change' % (self._meta.app_label, self._meta.model_name), args=[self.id])
+        return u'<a href="%s">%s</a>' % (url, str(self.start))

@@ -26,7 +26,7 @@
                 {% if user.is_authenticated %}
                     Hello, {{ user.username }}
                     [<a href="{% url 'logout' %}">Logout</a>]
-                    [<a href="{% url 'calendarview' %}">Your Calendar</a>]
+                    [<a href="{% url 'calendarview' 0 0 %}">Your Calendar</a>]
                     [<a href="{% url 'friendlist' %}">Friend List</a>]
                 {% else %}
                     [<a href="{% url 'signup' %}">Sign Up</a>]
