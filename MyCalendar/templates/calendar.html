@@ -4,6 +4,8 @@
 {% block body %}
 
 <a href="{% url 'calendarview' prev_month prev_year %}">Prev</a>  <a href="{% url 'calendarview' next_month next_year %}">Next</a>
+    <br>
+    <a href="{% url 'newevent' %}">Add Event</a>
 
     {{ cal }}
 

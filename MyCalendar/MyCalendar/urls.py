@@ -31,5 +31,6 @@ urlpatterns = [
     path('friends/pending', userViews.pendingrequests, name='pendingfriends'),
     path('friends/pending/accept/<int:pk>', userViews.requestaccept, name='acceptfirend'),
     path('friends/pending/decline/<int:pk>', userViews.requestdecline, name='declinefriend'),
-    path('calendar/<int:pk>/<int:kpk>', eventViews.CalendarView, name='calendarview')
+    path('calendar/<int:pk>/<int:kpk>', eventViews.CalendarView, name='calendarview'),
+    path('calendar/newevent', eventViews.NewEvent, name='newevent')
 ]

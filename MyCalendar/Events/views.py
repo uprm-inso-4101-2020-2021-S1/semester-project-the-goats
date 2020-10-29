@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from calendar import HTMLCalendar
 from datetime import datetime
 from django.utils.safestring import mark_safe
 from .models import Event
+from .forms import EventForm
 # Create your views here.
 
 
@@ -28,8 +29,8 @@ class EventCalendar(HTMLCalendar):
         s = ''.join(self.formatday(d, wd, events) for (d, wd) in theweek)
         return '<tr>%s</tr>' % s
 
-    def formatmonth(self, theyear, themonth, withyear=True):
-        events = Event.objects.filter(day__month=themonth)
+    def formatmonth(self, theyear, themonth, user, withyear=True):
+        events = Event.objects.filter(day__month=themonth, creator=user)
 
         v = []
         a = v.append
@@ -62,7 +63,8 @@ def CalendarView(request, pk, kpk):
     else:
         year = kpk
 
-    cal = EventCalendar().formatmonth(year, month, withyear=True).replace('<td ', '<td  width="150" height="150"')
+    user = request.user
+    cal = EventCalendar().formatmonth(year, month, user,  withyear=True).replace('<td ', '<td  width="150" height="150"')
 
     prev_month = month - 1
     prev_year = year
@@ -79,3 +81,16 @@ def CalendarView(request, pk, kpk):
 
     return render(request, 'calendar.html', {'cal': mark_safe(cal), 'prev_month': prev_month, 'prev_year': prev_year,
                                              'next_month': next_month, 'next_year': next_year})
+
+def NewEvent(request):
+    if request.method == 'POST':
+        form = EventForm(request.POST)
+        user = request.user
+        if form.is_valid():
+            event = form.save()
+            event.creator = user
+
+            event.save()
+            return redirect('home')
+    form = EventForm()
+    return render(request, 'new_event.html', {'form': form})
