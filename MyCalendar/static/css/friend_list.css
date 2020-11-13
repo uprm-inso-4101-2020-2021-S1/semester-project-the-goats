@@ -1,0 +1,18 @@
+a {
+    font-family: 'Josefin Sans', sans-serif;
+    color: hotpink;
+}
+
+#backgroundImg {
+	background-color: #e5474b;
+	color: #f2a3a5;
+	padding: 18em 0 18em 0;
+	background-color: #0c0c0c;
+	background-image: url("https://cdn.discordapp.com/attachments/480583998611914763/776314374470107156/paper.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 15% left;
+	text-align: left;
+	position: relative;
+	z-index: 9999;
+}

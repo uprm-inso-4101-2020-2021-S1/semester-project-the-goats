@@ -1,0 +1,20 @@
+.banner {
+	background-color: #e5474b;
+	color: #f2a3a5;
+	padding: 18em 0 18em 0;
+	background-color: #0c0c0c;
+	background-image: url("https://cdn.discordapp.com/attachments/567871158167273487/776287611038990356/wtf.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 15% left;
+	text-align: left;
+	position: relative;
+	z-index: 9999;
+}
+
+#bannerfont {
+    font-family: 'Noto Sans JP', sans-serif;
+    margin-left: 40px;
+    font-size: 40px;
+    color: #fff;
+}

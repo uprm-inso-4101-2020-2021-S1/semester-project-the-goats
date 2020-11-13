@@ -1,9 +1,17 @@
 {%  extends 'base.html' %}
 
-{% block tilte %} Home {% endblock %}
+{% block Title %} Home {% endblock %}
+{% load static %}
+{% block header %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+{% endblock %}
+
+
 {% block body %}
-
-    Welcome!
-
-
+			<section class="banner desaturate">
+                <div id="bannerfont">Jump into a whole new group-based 
+                    <br> calendar experience!</div> </section> </br>
+			</section>
 {% endblock %}

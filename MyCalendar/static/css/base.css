@@ -1,0 +1,32 @@
+.navigationBarBase{
+    display: block;
+    margin-top: 0;
+    width: 100%;
+    height: auto;
+    background-color: #583b78;
+}
+
+#navlogo{
+    display: inline-block;
+    font-family: 'Aldrich', sans-serif;
+    font-size: 40px;
+    color: #fff;
+    margin-left: 10px;
+}
+
+#navcontainer{
+    display: inline-block;
+    float: right;
+}
+
+table#navtable{
+    width: 100%;
+    table-layout: fixed;
+}
+
+.navimg{
+    width: 50px;
+    height: 50px;
+    margin: 10px 30px 10px 30px;
+    filter: invert(100%);
+}

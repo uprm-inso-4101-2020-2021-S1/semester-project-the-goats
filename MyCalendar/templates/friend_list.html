@@ -1,27 +1,46 @@
 {%  extends 'base.html' %}
 
-{% block tilte %} Home {% endblock %}
+{% block Title %} Friend List {% endblock %}
+{% load static %}
+{% block header %}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+
+{% endblock %}
+
 {% block body %}
 
-    <div>
-     <a href="{% url 'addfriend'  %}">Add Friends</a>
-    <br>
-    <a href="{% url 'pendingfriends'  %}">Pending Friends</a>
+    <style>
+    body {
+    font-family: 'Josefin Sans', sans-serif;
+    }
+
+    a {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #945ad4;
+    }
+
+    ol {
+    background: url('https://cdn.discordapp.com/attachments/480583998611914763/776630487710957578/user2.png') no-repeat left top;
+    margin-left: 12px;
+    }
+    </style>
+
+    <div> <a href="{% url 'addfriend'  %}"> Add Friends</a> | <a href="{% url 'pendingfriends'  %}">Pending Friends</a> </div>
 
 
-
-    </div>
 
     <div>
 
     {% for follower in followers %}
         {% if follower.accepted %}
-           > {{ follower.following.username }} <br>
+        <ol> {{ follower.following.username }} </ol>
         {% endif %} 
 
     {% endfor %}
 
     </div>
 
+    </body>
 
 {% endblock %}
