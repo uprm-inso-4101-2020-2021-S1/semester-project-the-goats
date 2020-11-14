@@ -35,6 +35,7 @@
     {% for follower in followers %}
         {% if follower.accepted %}
         <ol> {{ follower.following.username }} </ol>
+            <a href="{% url 'friendcalendar' 0 0 follower.pk %}">View Calendar</a>
         {% endif %} 
 
     {% endfor %}

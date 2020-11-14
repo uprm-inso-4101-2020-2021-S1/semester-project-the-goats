@@ -10,6 +10,7 @@ class Event(models.Model):
     end = models.TimeField(editable=True, null=True)
     description = models.TextField()
     creator = models.ForeignKey(User, related_name="events", on_delete=models.CASCADE, null=True)
+    rank = models.CharField(max_length=100)
 
     def check_overlap(self, existing_start, existing_end, new_start, new_end):
         overlap = False
