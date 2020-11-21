@@ -166,3 +166,13 @@ def FriendCalendarView(request, pk, kpk, kp):
 
     return render(request, 'calendar.html', {'cal': mark_safe(cal), 'prev_month': prev_month, 'prev_year': prev_year,
                                              'next_month': next_month, 'next_year': next_year, 'user': user})
+
+def EventView(request, pk):
+    event = Event.objects.get(pk=pk)
+    user = request.user
+    if event.creator == user:
+        connection = None
+    else:
+        connection = Connection.objects.get(following=event.creator, creator=user)
+
+    return render(request,'viewevent.html',{'event':event, 'user':user, 'connection':connection})

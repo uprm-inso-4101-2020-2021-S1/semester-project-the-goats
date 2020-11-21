@@ -26,12 +26,13 @@ class Event(models.Model):
         if self.end <= self.start:
             raise ValidationError('Ending time must be after start time')
 
-        events = Event.objects.filter(day=self.day)
+        events = Event.objects.filter(day=self.day, creator=self.creator)
 
         for event in events:
             if self.check_overlap(event.start, event.end, self.start, self.end):
                 raise ValidationError('There is time overlap with another event.')
 
     def get_absolute_url(self):
-        url = reverse('admin:%s_%s_change' % (self._meta.app_label, self._meta.model_name), args=[self.id])
+        # url = reverse('admin:%s_%s_change' % (self._meta.app_label, self._meta.model_name), args=[self.id])
+        url = reverse('eventview', args=[self.pk])
         return u'<a href="%s">%s</a>' % (url, str(self.start))

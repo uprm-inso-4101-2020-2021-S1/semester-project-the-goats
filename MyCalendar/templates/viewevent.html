@@ -1,0 +1,34 @@
+{%  extends 'base.html' %}
+
+{% block Title %} Friend List {% endblock %}
+{% load static %}
+
+{% block body %}
+
+
+
+
+
+    <div>
+
+    {% ifequal user event.creator  %}
+        <a href="{% url 'calendarview' 0 0 %}"> Back</a>
+        <br>
+
+    {% else %}
+        <a href="{% url 'friendcalendar' 0 0 connection.pk %}">Back</a>
+        You are seeing {{ event.creator }}'s event <br>
+    
+    {% endifequal %}
+    
+
+    {{ event.title  }} <br>
+    {{ event.day  }}<br>
+    {{ event.start  }}<br>
+    {{ event.end  }}<br>
+    {{ event.description  }}<br>
+    </div>
+
+    </body>
+
+{% endblock %}
